@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Notes App</h1>
+  <div id="note-form">
+    <textarea id="note-input" placeholder="Write a note..."></textarea>
+    <input id="group-input" type="text" placeholder="Group (e.g. Work, Personal, Project)">
+    <select id="status-input">
+      <option value="not-started">Not Started</option>
+      <option value="in-progress">Working On</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button id="save-btn">Save Note</button>
+  </div>
+  <div id="notes-list"></div>
+  <script>
+    // Add 5 example notes on first load if none exist, then display notes
+    if (!localStorage.getItem('notes')) {
+      const exampleNotes = [
+        { text: 'Finish math homework', group: 'School', status: 'not-started' },
+        { text: 'Buy groceries: eggs, milk, bread', group: 'Personal', status: 'in-progress' },
+        { text: 'Read 20 pages of book', group: 'Personal', status: 'completed' },
+        { text: 'Prepare project slides', group: 'Work', status: 'not-started' },
+        { text: 'Call plumber for kitchen sink', group: 'Home', status: 'in-progress' }
+      ];
+      localStorage.setItem('notes', JSON.stringify(exampleNotes));
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
